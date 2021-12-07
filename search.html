@@ -1,0 +1,53 @@
+<!-- Search Bar -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>{{ title }} - My Flask Application</title>
+    <link rel="stylesheet" type="text/css" href="/static/content/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
+    <script src="/static/scripts/modernizr-2.6.2.js"></script>
+    <link rel="stylesheet" href="/static/content/search_index.css">
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">We Share</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('insert') }}">Register things</a></li>
+                    <li><a href="{{ url_for('search') }}">Search things</a></li>
+                    <li><a href="{{ url_for('login') }}">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h1><center>We Share things</center></h1>
+    <form class="example" method="post" action=""
+          style="margin:auto;max-width:600px">
+        <input type="text" placeholder="Search by item name" name="item">
+        <button type="submit">
+            <i class="fa fa-search"></i>
+        </button>
+    </form>
+    <p></p>
+    <center>
+        {% for item in data %}
+        <tr>
+            <td> {{item['item']}} found at {{item['location']}}</td>
+            </br>
+        </tr>
+        {% endfor %}
+    </center>
+</body>
+</html>
